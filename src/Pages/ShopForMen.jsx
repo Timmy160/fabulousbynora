@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"; // Don't forget this import!
+
 import Heroimg from "../components/IMG/abouthero.png";
 import newArrival1 from "../components/IMG/newarrival1.jpg";
 import newArrival2 from "../components/IMG/newarrival2.jpg";
@@ -11,28 +13,64 @@ import Jewelry3 from "../components/IMG/jewelry3.jpg";
 import Jewelry4 from "../components/IMG/jewelry4.jpg";
 
 // ==========================
-// 1. Product Card (No Change)
+// DUMMY PRODUCTS (MOVED & EXPORTED for ProductPage access)
 // ==========================
-const ProductCard = ({ image, title, price }) => {
+export const DUMMY_PRODUCTS = [
+  { id: 1, title: "African Suit Set", price: 189.99, image: newArrival1, category: "Agbada" },
+  { id: 2, title: "Ankara Shirt & Trousers", price: 125.50, image: newArrival2, category: "Shirts" },
+  { id: 3, title: "Dashiki Robe", price: 210.00, image: newArrival3, category: "Kaftan" },
+  { id: 4, title: "Brocade Agbada", price: 350.00, image: newArrival4, category: "Agbada" },
+  { id: 5, title: "Woven Fedora Hat", price: 45.00, image: Jewelry1, category: "Footwear" },
+  { id: 6, title: "Leather Sandals", price: 85.00, image: Jewelry2, category: "Footwear" },
+  { id: 7, title: "Casual Kaftan", price: 95.00, image: Jewelry3, category: "Kaftan" },
+  { id: 8, title: "Designer Print Shirt", price: 155.00, image: Jewelry4, category: "Shirts" },
+];
+
+// ==========================
+// 1. Product Card (UPDATED to use Link and accept ID)
+// ==========================
+const ProductCard = ({ id, image, title, price }) => { // Added 'id' prop
   return (
-    <div className="flex flex-col items-center cursor-pointer group">
-      <div className="w-full aspect-square overflow-hidden mb-4 rounded-lg shadow-sm">
+    // Wrapped the card content in a Link component
+    <Link to={`/product/${id}`} className="flex flex-col items-center group">
+      <div className="w-full aspect-square overflow-hidden mb-4 shadow-sm">
         <img
           src={image}
           alt={title}
           className="object-cover w-full h-full transition duration-500 group-hover:scale-110"
         />
       </div>
-      <h3 className="text-lg font-medium text-center line-clamp-2 px-2">{title}</h3>
-      <p className="text-gray-800 font-bold mt-1">
+      <h3
+        className="text-center truncate px-2 w-[180px] sm:w-[230px] md:w-[300px] lg:w-[350px]"
+        style={{
+          fontFamily: "Nunito",
+          fontWeight: 700,
+          fontStyle: "normal",
+          lineHeight: "100%",
+          letterSpacing: "0px",
+        }}
+        title={title} // shows full text on hover
+      >
+        {title}
+      </h3>
+      <p
+        className="text-gray-800 font-semibold w-auto text-[12px] sm:text-[14px] md:text-[16px] mt-1"
+        style={{
+          fontFamily: "Nunito",
+          fontWeight: 600,
+          fontStyle: "normal",
+          lineHeight: "100%",
+          letterSpacing: "0px",
+        }}
+      >
         ${typeof price === "number" ? price.toFixed(2) : price}
       </p>
-    </div>
+    </Link>
   );
 };
 
 // ==========================
-// 2. Filter Sidebar (Minor price range style tweak)
+// 2. Filter Sidebar (No Change)
 // ==========================
 const FilterSidebar = ({ onApply, onClose }) => {
   const categories = ["Kaftan", "Shirts", "Agbada", "Footwear", "Trousers"];
@@ -69,7 +107,7 @@ const FilterSidebar = ({ onApply, onClose }) => {
   };
 
   return (
-    <div className="w-full h-full p-5 bg-white overflow-y-auto relative">
+    <div className="w-[80%] h-full p-5 bg-white-500 overflow-y-auto relative">
       {/* Close Button - visible on mobile drawer */}
       {onClose && (
         <button
@@ -91,14 +129,34 @@ const FilterSidebar = ({ onApply, onClose }) => {
 
       <h3
         className="text-2xl font-bold mb-6"
-        style={{ fontFamily: '"Playfair Display", serif' }}
+        style={{
+          fontFamily: "Nunito",
+          fontWeight: 700,
+          fontStyle: "normal",
+          fontSize: "24px",
+          lineHeight: "150%",
+          letterSpacing: "0px",
+          verticalAlign: "middle",
+        }}
       >
         Men Filter
       </h3>
 
       {/* Categories */}
       <div className="mb-10">
-        <h4 className="text-lg font-semibold text-gray-800 mb-4">Types</h4>
+        <h4
+          className="text-lg font-semibold text-gray-800 mb-4"
+          style={{
+            fontFamily: "Nunito",
+            fontWeight: 700,
+            fontStyle: "normal",
+            fontSize: "16px",
+            lineHeight: "100%",
+            letterSpacing: "0px",
+          }}
+        >
+          Types
+        </h4>
         <div className="space-y-3">
           {categories.map((cat) => (
             <label key={cat} className="flex items-center cursor-pointer">
@@ -118,11 +176,28 @@ const FilterSidebar = ({ onApply, onClose }) => {
       <div className="mb-12">
         <h3
           className="text-xl font-bold mb-4"
-          style={{ fontFamily: '"Playfair Display", serif' }}
+          style={{
+            fontFamily: "Nunito",
+            fontWeight: 700,
+            fontStyle: "normal",
+            fontSize: "16px",
+            lineHeight: "100%",
+            letterSpacing: "0px",
+          }}
         >
           Price
         </h3>
-        <p className="text-sm text-gray-700 mb-4">
+
+        <p
+          className="text-sm text-gray-700 mb-4"
+          style={{
+            fontFamily: "Plus Jakarta Sans",
+            fontWeight: 400,
+            fontSize: "14px",
+            lineHeight: "100%",
+            letterSpacing: "0px",
+          }}
+        >
           Range: ${displayedMin} – ${displayedMax}
         </p>
 
@@ -178,26 +253,26 @@ const FilterSidebar = ({ onApply, onClose }) => {
   );
 };
 
-// ==========================
-// 3. Dummy Products (No Change)
-// ==========================
-const DUMMY_PRODUCTS = [
-  { id: 1, title: "African Suit Set", price: 189.99, image: newArrival1, category: "Agbada" },
-  { id: 2, title: "Ankara Shirt & Trousers", price: 125.50, image: newArrival2, category: "Shirts" },
-  { id: 3, title: "Dashiki Robe", price: 210.00, image: newArrival3, category: "Kaftan" },
-  { id: 4, title: "Brocade Agbada", price: 350.00, image: newArrival4, category: "Agbada" },
-  { id: 5, title: "Woven Fedora Hat", price: 45.00, image: Jewelry1, category: "Footwear" },
-  { id: 6, title: "Leather Sandals", price: 85.00, image: Jewelry2, category: "Footwear" },
-  { id: 7, title: "Casual Kaftan", price: 95.00, image: Jewelry3, category: "Kaftan" },
-  { id: 8, title: "Designer Print Shirt", price: 155.00, image: Jewelry4, category: "Shirts" },
-];
 
 // ==========================
-// 4. Main ShopForMen Component (Dynamic Grid & Gap confirmed)
+// 4. Main ShopForMen Component (UPDATED gridClasses definition)
 // ==========================
 const ShopForMen = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [products, setProducts] = useState(DUMMY_PRODUCTS);
+  const [sortOption, setSortOption] = useState("default"); // New state for sorting
+
+  const applySorting = (currentProducts, option) => {
+    const sortedProducts = [...currentProducts];
+
+    if (option === "price-asc") {
+      sortedProducts.sort((a, b) => a.price - b.price);
+    } else if (option === "price-desc") {
+      sortedProducts.sort((a, b) => b.price - a.price);
+    }
+
+    return sortedProducts;
+  };
 
   const handleApplyFilters = ({ categories, priceRange }) => {
     const filtered = DUMMY_PRODUCTS.filter((p) => {
@@ -205,21 +280,27 @@ const ShopForMen = () => {
       const priceOk = p.price >= priceRange[0] && p.price <= priceRange[1];
       return catOk && priceOk;
     });
-    setProducts(filtered);
+    setProducts(applySorting(filtered, sortOption));
   };
 
-  const gridClasses = isFilterOpen
-    ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3" 
-    : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4"; 
+  const handleSortChange = (e) => {
+    const newSortOption = e.target.value;
+    setSortOption(newSortOption);
+    setProducts(applySorting(products, newSortOption));
+  };
+
+  // CORRECTED: Define gridColumnClasses to ONLY contain the column definitions
+  const gridColumnClasses = isFilterOpen
+    ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3"
+    : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4";
 
   return (
     <>
-      {/* Hero Section (omitted for brevity) */}
       <section className="relative w-full h-[45vh] md:h-[52vh] flex items-center justify-center overflow-hidden">
         <motion.img
           src={Heroimg}
           alt="Shop For Men"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
@@ -229,19 +310,16 @@ const ShopForMen = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="relative z-10 text-white text-5xl md:text-6xl lg:text-7xl font-bold text-center px-4"
+          className="relative z-10 text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center px-4 leading-tight"
           style={{ fontFamily: '"Playfair Display", serif' }}
         >
-          Shop For Men
+           Men
         </motion.h1>
       </section>
 
-      {/* Main Content */}
       <main className="py-8 px-4 sm:px-6 lg:px-[6%] max-w-7xl mx-auto">
-        {/* Top Bar (omitted for brevity) */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4 border-b border-gray-200 pb-4">
           <div className="flex items-center gap-6 w-full sm:w-auto">
-            {/* Filter Toggle Button */}
             <button
               onClick={() => setIsFilterOpen(!isFilterOpen)}
               className="flex items-center gap-2 text-[#BD007C] font-semibold hover:text-[#9b0066] transition"
@@ -258,17 +336,54 @@ const ShopForMen = () => {
             </p>
           </div>
 
-          <select className="border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:border-[#BD007C]">
-            <option>Latest</option>
-            <option>Price: Low to High</option>
-            <option>Price: High to Low</option>
-            <option>Most Popular</option>
+          <select
+            className="border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:border-[#BD007C]"
+            value={sortOption}
+            onChange={handleSortChange}
+          >
+            <option
+              value="default"
+              style={{
+                fontFamily: "Nunito Sans",
+                fontWeight: 500,
+                fontStyle: "normal",
+                fontSize: "16px",
+                lineHeight: "100%",
+                letterSpacing: "0px",
+              }}
+            >
+              Sort By:
+            </option>
+            <option
+              value="price-asc"
+              style={{
+                fontFamily: "Nunito Sans",
+                fontWeight: 400,
+                fontStyle: "normal",
+                fontSize: "14px",
+                lineHeight: "100%",
+                letterSpacing: "0px",
+              }}
+            >
+              Price: Low to High
+            </option>
+            <option
+              value="price-desc"
+              style={{
+                fontFamily: "Nunito Sans",
+                fontWeight: 400,
+                fontStyle: "normal",
+                fontSize: "14px",
+                lineHeight: "100%",
+                letterSpacing: "0px",
+              }}
+            >
+              Price: High to Low
+            </option>
           </select>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 relative">
-          
-          {/* Collapsible Filter Sidebar (Desktop) - LINE 261 START */}
           <motion.aside
             initial={false}
             animate={{
@@ -278,19 +393,18 @@ const ShopForMen = () => {
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
             className="hidden lg:block flex-shrink-0 overflow-hidden"
           >
-            {/* Inner div maintains fixed width, fixing the 'sliding' content issue */}
-            <div className="w-80 xl:w-96 bg-white h-full"> 
+            <div className="w-80 xl:w-96 bg-white h-full">
               <FilterSidebar onApply={handleApplyFilters} />
             </div>
           </motion.aside>
-          {/* Collapsible Filter Sidebar (Desktop) - LINE 271 END */}
 
-          {/* Products Grid */}
           <div className="flex-1">
-            <div className={`grid gap-6 md:gap-8 ${gridClasses}`}>
+            {/* CORRECTED LINE: Combine static grid/gap with dynamic column classes */}
+            <div className={`grid gap-6 md:gap-8 ${gridColumnClasses}`}>
               {products.map((product) => (
                 <ProductCard
                   key={product.id}
+                  id={product.id}
                   image={product.image}
                   title={product.title}
                   price={product.price}
@@ -306,7 +420,6 @@ const ShopForMen = () => {
           </div>
         </div>
 
-        {/* Mobile Full-Screen Drawer (omitted for brevity) */}
         {isFilterOpen && (
           <>
             <div

@@ -2,52 +2,67 @@ import React from "react";
 
 const CategoryBanner = ({ title, image }) => {
   return (
-    <div className="relative h-[400px] md:h-[500px] overflow-hidden rounded-xl group cursor-pointer">
-      
-      {/* Full image — always visible, no cropping */}
+    <div className="relative w-full h-[55vh] min-h-[360px] max-h-[700px] overflow-hidden group cursor-pointer">
+      {/* Background Image */}
       <img
         src={image}
         alt={title}
-        className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+        className="absolute inset-0 h-full w-full object-cover object-center 
+                   transition-transform duration-1000 ease-out 
+                   group-hover:scale-105 
+                   group-active:scale-105"
       />
 
-      {/* Gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+      {/* Gradient Overlay – stronger on mobile */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent 
+                      md:from-black/70 md:via-black/30" />
 
-      {/* Text — Bottom-left aligned */}
-      <div
-        className="
-          absolute
-          z-10
-          text-white
-          /* SMALL screens: adjust left and bottom spacing here */
-          bottom-8 left-4
-          /* MEDIUM screens: adjust left and bottom spacing here */
-          md:bottom-12 md:left-8
-          /* LARGE screens: adjust left and bottom spacing here */
-          lg:bottom-16 lg:left-12
-        "
-      >
-        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3 font-playfair leading-snug">
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col justify-end pb-8 px-4 
+                      sm:px-6 md:pb-12 md:px-8 lg:pb-16 lg:px-12 xl:px-20">
+        
+        {/* Title */}
+        <h3 className="
+          text-3xl xs:text-4xl 
+          sm:text-5xl 
+          md:text-5xl lg:text-6xl xl:text-7xl 
+          font-bold tracking-tight leading-tight 
+          font-playfair text-white drop-shadow-2xl 
+          max-w-4xl
+        ">
           {title}
         </h3>
 
-        {/* Button */}
+        {/* Button – no underline, just arrow */}
         <button
-          style={{
-            fontFamily: "Nunito, sans-serif",
-            fontWeight: 500,
-            fontStyle: "normal",
-            fontSize: "20px",
-            lineHeight: "100%",
-            letterSpacing: "0",
-          }}
-          className="text-white border-b-2 border-white pb-1 inline-flex items-center gap-2 w-fit tracking-widest text-base md:text-lg
-                     hover:text-[#BD007C] hover:border-[#BD007C] transition-all duration-300 cursor-pointer"
+          className="
+            mt-6 md:mt-8 
+            inline-flex items-center gap-3 
+            text-white 
+            font-nunito font-medium 
+            text-lg xs:text-xl md:text-2xl 
+            tracking-widest 
+            transition-all duration-300 
+            hover:text-[#BD007C] 
+            active:text-[#BD007C]
+            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-500/50
+          "
+          style={{ fontFamily: "Nunito, sans-serif" }}
+          aria-label={`View all ${title}`}
         >
           View All
+          <span
+            aria-hidden="true"
+            className="text-xl transition-transform duration-300 group-hover:translate-x-3 
+                       group-active:translate-x-3"
+          >
+            →
+          </span>
         </button>
       </div>
+
+      {/* Subtle bottom fade */}
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 
 const HeroBanner = ({ title, image }) => {
   return (
-    <section className="relative h-[400px] md:h-[500px] overflow-hidden rounded-lg">
+    <section className="relative h-[400px] md:h-[500px] overflow-hidden ">
       {/* Full background image */}
       <img
         src={image}
@@ -21,12 +21,12 @@ const HeroBanner = ({ title, image }) => {
             fontFamily: '"Playfair Display", serif',
             fontWeight: 700,
             fontStyle: "normal",
-            fontSize: "60px",
+            fontSize: "clamp(2.5rem, 8vw, 60px)",   // ← Responsive but never bigger than your original 60px
             lineHeight: "100%",
             letterSpacing: "0",
             textAlign: "center",
           }}
-          className="text-white tracking-tight mb-6"
+          className="text-white tracking-tight mb-6 max-w-full"
         >
           {title}
         </h2>

@@ -3,6 +3,8 @@ import Hero from "../components/Hero";
 import HeroBanner from "../components/HeroBanner";
 import ProductSection from "../components/ProductSection";
 import CategoryBanner from "../components/CategoryBanner";
+
+// Images
 import newArrival1 from "../components/IMG/newarrival1.jpg";
 import newArrival2 from "../components/IMG/newarrival2.jpg";
 import newArrival3 from "../components/IMG/newarrival3.jpg";
@@ -17,90 +19,75 @@ import WomenCategory from "../components/IMG/womencategory.jpg";
 
 const Index = () => {
   const newArrivals = [
-    { id: 1, image: newArrival1, title: "Ankara Fabric For Ladies", price: "300" },
-    { id: 2, image: newArrival2, title: "Ankara Fabric For Ladies", price: "100" },
-    { id: 3, image: newArrival3, title: "Ankara Fabric For Ladies", price: "100" },
-    { id: 4, image: newArrival4, title: "Ankara Fabric For Ladies", price: "100" },
+    { id: 1, image: newArrival1, title: "Ankara Fabric For Ladies", price: 300 },
+    { id: 2, image: newArrival2, title: "Ankara Fabric For Ladies", price: 100 },
+    { id: 3, image: newArrival3, title: "Ankara Fabric For Ladies", price: 100 },
+    { id: 4, image: newArrival4, title: "Ankara Fabric For Ladies", price: 100 },
   ];
 
   const queensCollection = [
-    { id: 5, image: newArrival3, title: "Ankara Fabric For Ladies", price: "300" },
-    { id: 6, image: newArrival1, title: "Ankara Fabric For Ladies", price: "100" },
-    { id: 7, image: newArrival4, title: "Ankara Fabric For Ladies", price: "100" },
-    { id: 8, image: newArrival2, title: "Ankara Fabric For Ladies", price: "100" },
+    { id: 5, image: newArrival3, title: "Ankara Fabric For Ladies", price: 300 },
+    { id: 6, image: newArrival1, title: "Ankara Fabric For Ladies", price: 100 },
+    { id: 7, image: newArrival4, title: "Ankara Fabric For Ladies", price: 100 },
+    { id: 8, image: newArrival2, title: "Ankara Fabric For Ladies", price: 100 },
   ];
 
   const accessories = [
-    { id: 9, image: Jewelry1, title: "Ankara Fabric For Ladies", price: "100" },
-    { id: 10, image: Jewelry2, title: "Ankara Fabric For Ladies", price: "100" },
-    { id: 11, image: Jewelry3, title: "Ankara Fabric For Ladies", price: "100" },
-    { id: 12, image: Jewelry4, title: "Ankara Fabric For Ladies", price: "100" },
+    { id: 9,  image: Jewelry1, title: "Gold Necklace Set", price: 180 },
+    { id: 10, image: Jewelry2, title: "Pearl Earrings", price: 120 },
+    { id: 11, image: Jewelry3, title: "Diamond Ring", price: 850 },
+    { id: 12, image: Jewelry4, title: "Silver Bracelet", price: 95 },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      
-
-      {/* Main Content */}
-      <div className="py-4 px-[6%] md:px-[6%]">
+    <div className="bg-background min-h-screen">
+      <div className="w-full">
         <Hero />
+      </div>
 
-        {/* New Arrivals Section */}
-        <ProductSection title="New Arrivals" products={newArrivals} />
+      <main className="w-full">
+        {/* New Arrivals */}
+        <section className="pt-8 pb-12">
+          <ProductSection title="New Arrivals" products={newArrivals} />
+        </section>
 
-        {/* Category Banners */}
-        <section className="py-10">
-          <div className="container mx-auto px-3">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <CategoryBanner
-                title={
-                  <span
-                    style={{
-                      fontFamily: '"Playfair Display", serif',
-                      fontWeight: 700,
-                      fontStyle: "normal",
-                      fontSize: "40px",
-                      lineHeight: "100%",
-                      letterSpacing: "0",
-                    }}
-                  >
-                    Men
-                  </span>
-                }
-                image={MenCategory}
-              />
-              <CategoryBanner
-                title={
-                  <span
-                    style={{
-                      fontFamily: '"Playfair Display", serif',
-                      fontWeight: 700,
-                      fontStyle: "normal",
-                      fontSize: "40px",
-                      lineHeight: "100%",
-                      letterSpacing: "0",
-                    }}
-                  >
-                    Women
-                  </span>
-                }
-                image={WomenCategory}
-              />
-            </div>
+        {/* Men & Women Category */}
+        <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-12">
+            <CategoryBanner
+              title={
+                <span className="text-4xl sm:text-5xl md:text-6xl font-bold" style={{ fontFamily: '"Playfair Display", serif' }}>
+                  Men
+                </span>
+              }
+              image={MenCategory}
+            />
+            <CategoryBanner
+              title={
+                <span className="text-4xl sm:text-5xl md:text-6xl font-bold" style={{ fontFamily: '"Playfair Display", serif' }}>
+                  Women
+                </span>
+              }
+              image={WomenCategory}
+            />
           </div>
         </section>
 
         {/* Queens Collection */}
-        <ProductSection title="The Queens Collection" products={queensCollection} />
+        <section className="pb-12">
+          <ProductSection title="The Queens Collection" products={queensCollection} />
+        </section>
 
-        {/* Hero Banner for Kids */}
-        <HeroBanner title="Shop For Kids" image={KidsBgImg} />
+        {/* Kids Banner */}
+        <section className="w-full">
+          <HeroBanner title="Shop For Kids" image={KidsBgImg} />
+        </section>
 
-        {/* Accessories Section */}
-        <ProductSection title="Complete Your Look" products={accessories} />
-      </div>
-      <div className="w-full">
-       </div>
+        {/* Accessories */}
+        <section className="pt-12 pb-16">
+          <ProductSection title="Complete Your Look" products={accessories} />
+        </section>
+      </main>
     </div>
   );
 };
