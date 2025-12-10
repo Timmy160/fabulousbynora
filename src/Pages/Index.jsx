@@ -56,7 +56,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-12">
             <CategoryBanner
               title={
-                <span className="text-4xl sm:text-5xl md:text-6xl font-bold" style={{ fontFamily: '"Playfair Display", serif' }}>
+                <span className="text-1xl sm:text-3xl md:text-4xl font-bold" style={{ fontFamily: '"Playfair Display", serif' }}>
                   Men
                 </span>
               }
@@ -64,7 +64,7 @@ const Index = () => {
             />
             <CategoryBanner
               title={
-                <span className="text-4xl sm:text-5xl md:text-6xl font-bold" style={{ fontFamily: '"Playfair Display", serif' }}>
+                <span className="text-1xl sm:text-3xl md:text-4xl font-bold" style={{ fontFamily: '"Playfair Display", serif' }}>
                   Women
                 </span>
               }
@@ -80,7 +80,7 @@ const Index = () => {
 
         {/* Kids Banner */}
         <section className="w-full">
-          <HeroBanner title="Shop For Kids" image={KidsBgImg} />
+          <HeroBanner title="Kids" image={KidsBgImg} />
         </section>
 
         {/* Accessories */}

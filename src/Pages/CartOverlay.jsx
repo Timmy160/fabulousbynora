@@ -130,7 +130,7 @@ function CartOverlay({ isOpen, onClose, cartItems, setCartItems }) {
                     
                     {/* Checkout Button: Correctly links to the /checkout page */}
                     <Link to="/checkout"
-                        className="block w-full text-center bg-[#6A0DAD] hover:bg-[#5a0ca0] text-white font-bold text-lg py-3 transition mb-3"
+                        className="block w-full text-center bg-[#6A0DAD] hover:bg-[#5a0ca0] text-white font-bold text-lg py-2 transition mb-3"
                         onClick={onClose} 
                     >
                         Proceed to Checkout
@@ -139,7 +139,7 @@ function CartOverlay({ isOpen, onClose, cartItems, setCartItems }) {
                     {/* Continue Shopping Button */}
                     <button 
                         onClick={onClose}
-                        className="w-full text-center border-2 border-[#6A0DAD] hover:border-[#5a0ca0] text-[#6A0DAD] font-bold text-lg py-3 transition"
+                        className="w-full text-center border-2 border-[#6A0DAD] hover:border-[#5a0ca0] text-[#6A0DAD] font-bold text-lg py-2 transition"
                     >
                         Continue Shopping
                     </button>

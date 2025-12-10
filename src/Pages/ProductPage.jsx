@@ -176,15 +176,15 @@ function ProductPage() {
           <h1 className="text-xl md:text-2xl font-bold text-gray-900 mb-4" style={{ fontFamily: '"Playfair Display", serif' }}>
             {product.title}
           </h1>
-          <p className="text-xl  text-[#6A0DAD] mb-4">
+          <p className="text-xl  text-[#6A0DAD] mb-2">
             ${product.price.toFixed(2)}
           </p>
 
-          <div className="h-px bg-gray-200 my-6"></div>
+          <div className="h-px bg-gray-200 my-4"></div>
 
           <div className="mb-6">
             {/* Swapped order: Details first, then Description */}
-            <div className="flex gap-10 border-b border-gray-200 mb-6">
+            <div className="flex gap-6 border-b border-gray-200 mb-4">
               <button
                 onClick={() => setActiveTab('details')}
                 className={`pb-3 text-lg font-bold relative ${activeTab === 'details' ? 'text-gray-900' : 'text-gray-500'}`}
@@ -216,18 +216,18 @@ function ProductPage() {
             </div>
           </div>
 
-          <div className="h-px bg-gray-200 my-8"></div>
+          <div className="h-px bg-gray-200 my-3"></div>
 
           <div className="flex flex-col gap-4">
             <button 
                 onClick={handleAddToCart}
-                className="w-full bg-[#6A0DAD] hover:bg-[#5a0ca0] text-white font-bold text-lg py-4 transition"
+                className="w-full bg-[#6A0DAD] hover:bg-[#5a0ca0] text-white font-bold text-lg py-2 transition"
             >
               Add to Cart
             </button>
             <Link
               to="/category/men"
-              className="w-full text-center border-2 border-[#6A0DAD] hover:border-[#5a0ca0] text-[#6A0DAD] font-bold text-lg py-4 transition"
+              className="w-full text-center border-2 border-[#6A0DAD] hover:border-[#5a0ca0] text-[#6A0DAD] font-bold text-lg py-2 transition"
             >
               Continue Shopping
             </Link>

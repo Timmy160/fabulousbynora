@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// src/Pages/RefundPolicy.jsx
+import React, { useState, useEffect } from 'react';
 
 const policies = {
   terms: {
@@ -70,7 +71,7 @@ We may update these Terms at any time. Continued use of the site means you accep
 These Terms are governed by the laws of the State of Texas.
 
 15. Contact Us
-Email: info@fabulousbynora.com`
+Email: info@fabulousbynora.com`,
   },
 
   privacy: {
@@ -112,7 +113,7 @@ We are not responsible for external sites. We do not collect data from children 
 Updates will be posted here with a new “Last Updated” date.
 
 9. Contact Us
-Email: info@fabulousbynora.com`
+Email: info@fabulousbynora.com`,
   },
 
   shipping: {
@@ -146,7 +147,7 @@ Once handed to the carrier, responsibility transfers. Contact the carrier first;
 Customs delays may occur. We cannot mark packages as “gift”.
 
 8. Contact Us
-Email: info@fabulousbynora.com`
+Email: info@fabulousbynora.com`,
   },
 
   refund: {
@@ -181,33 +182,37 @@ No refunds for fit issues due to incorrect measurements provided by customer.
 Approved returns processed in 3–7 business days.
 
 9. Contact Us
-Email: info@fabulousbynora.com`
-  }
+Email: info@fabulousbynora.com`,
+  },
 };
 
 function RefundPolicy() {
   const [activeTab, setActiveTab] = useState('refund');
-
   const activeColor = "rgba(189, 0, 124, 1)"; // Your brand magenta-purple
+
+  // Always scroll to top when the page is visited
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
 
-        {/* Tabs - Centered & Responsive */}
+        {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-12">
           {Object.entries(policies).map(([key, policy]) => (
             <button
               key={key}
               onClick={() => setActiveTab(key)}
-              className={`px-6 py-3 text-sm sm:text-base font-semibold tracking-wider transition-all duration-300 border-b-2 ${
+              className={`px-6 py-2 text-sm sm:text-base font-semibold tracking-wider transition-all duration-300 border-b-2 ${
                 activeTab === key
                   ? `text-[${activeColor}] border-[${activeColor}]`
                   : "text-gray-600 border-transparent hover:text-gray-900"
               }`}
               style={{
                 fontFamily: "'Playfair Display', serif",
-                borderBottom: activeTab === key ? `2px solid ${activeColor}` : "2px solid transparent"
+                borderBottom: activeTab === key ? `2px solid ${activeColor}` : "2px solid transparent",
               }}
             >
               {policy.title}
@@ -217,10 +222,15 @@ function RefundPolicy() {
 
         {/* Content Card */}
         <div className="bg-white shadow-xl rounded-lg p-8 sm:p-12">
-          <h1 className="text-3xl sm:text-4xl font-bold text-center mb-4" style={{ fontFamily: "'Playfair Display', serif", color: activeColor }}>
-            {policies[activeTab].title}  
+          <h1
+            className="text-2xl sm:text-3xl font-bold text-center mb-4"
+            style={{ fontFamily: "'Playfair Display', serif", color: activeColor }}
+          >
+            {policies[activeTab].title}
           </h1>
-          <p className="text-center text-gray-500 mb-10">Last Updated: {policies[activeTab].lastUpdated}</p>
+          <p className="text-center text-gray-500 mb-10">
+            Last Updated: {policies[activeTab].lastUpdated}
+          </p>
 
           <div className="prose prose-lg max-w-none text-gray-700 whitespace-pre-line leading-relaxed">
             {policies[activeTab].content}
@@ -229,7 +239,11 @@ function RefundPolicy() {
           <div className="mt-12 text-center">
             <p className="text-sm text-gray-500">
               Questions? Email us at{" "}
-              <a href="mailto:info@fabulousbynora.com" className="underline" style={{ color: activeColor }}>
+              <a
+                href="mailto:info@fabulousbynora.com"
+                className="underline"
+                style={{ color: activeColor }}
+              >
                 info@fabulousbynora.com
               </a>
             </p>

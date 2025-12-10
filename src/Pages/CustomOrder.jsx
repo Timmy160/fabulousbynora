@@ -42,7 +42,7 @@ function CustomOrder() {
       <div className="relative bg-white p-6 sm:p-8 shadow-2xl w-full max-w-[480px] z-10 mx-4 sm:mx-0 my-12 sm:my-20">
 
         <h1
-          className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 text-center"
+          className="text-1xl md:text-2xl font-bold text-gray-900 mb-3 text-center"
           style={{
             fontFamily: "'Playfair Display', serif",
             fontWeight: 700,
@@ -121,7 +121,7 @@ function CustomOrder() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full mt-4 py-3.5 bg-[rgba(72,31,128,1)] hover:bg-[rgba(72,31,128,0.9)] text-white font-nunito font-semibold text-[16px] transition-all duration-200"
+            className="w-full mt-4 py-2 bg-[rgba(72,31,128,1)] hover:bg-[rgba(72,31,128,0.9)] text-white font-nunito font-semibold text-[16px] transition-all duration-200"
           >
             Send Request
           </button>

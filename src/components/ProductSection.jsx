@@ -39,7 +39,7 @@ const ProductSection = ({ title, products }) => {
         {/* === MOBILE-ONLY BIG PINK BUTTON (centered below the grid) === */}
         <div className="md:hidden flex justify-center mt-2">
           <button
-            className="bg-[#BD007C] text-white font-bold py-4 px-6 text-lg tracking-wider hover:bg-[#a0006e] transition w-full max-w-sm"
+            className="bg-[#BD007C] text-white font-bold py-2 px-6 text-lg tracking-wider hover:bg-[#a0006e] transition w-full max-w-sm"
             style={{ fontFamily: "Nunito, sans-serif" }}
           >
             Shop Now

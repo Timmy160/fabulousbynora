@@ -139,14 +139,14 @@ const Header = () => {
             </button>
           </div>
 
-          <nav className="px-8 pt-10 space-y-8">
+          <nav className="px-4 pt-6 space-y-6">
             {topLinks.map((link) => (
               <div key={link.name}>
                 {link.to ? (
                   <Link
                     to={link.to}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-2xl font-medium text-gray-800 hover:text-[#BD007C] transition-all duration-300"
+                    className="block text-xl font-medium text-gray-800 hover:text-[#BD007C] transition-all duration-300"
                   >
                     {link.name}
                   </Link>

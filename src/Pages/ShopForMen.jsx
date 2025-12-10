@@ -245,7 +245,7 @@ const FilterSidebar = ({ onApply, onClose }) => {
 
       <button
         onClick={applyFilters}
-        className="w-full bg-[#BD007C] hover:bg-[#9b0066] text-white font-semibold py-4 rounded-md transition shadow-lg"
+        className="w-full bg-[#BD007C] hover:bg-[#9b0066] text-white font-semibold py-2 rounded-md transition shadow-lg"
       >
         Apply Filters
       </button>

@@ -83,7 +83,7 @@ function OrderSummary({ cartItems, shippingFee, handleMakePayment }) {
             {/* Make Payment Button */}
             <button 
                 onClick={handleMakePayment}
-                className="w-full bg-[#6A0DAD] hover:bg-[#5a0ca0] text-white font-bold text-lg py-3 transition mt-6 disabled:bg-gray-400"
+                className="w-full bg-[#6A0DAD] hover:bg-[#5a0ca0] text-white font-bold text-lg py-2 transition mt-6 disabled:bg-gray-400"
                 disabled={!cartItems.length}
             >
                 Make Payment
@@ -233,7 +233,7 @@ function CheckoutPage() {
             {/* Divider Line (Faint line just like the one under the header) */}
             <div className="h-px bg-gray-200 mb-8"></div> 
 
-            <h1 className="text-3xl font-bold text-gray-900 mb-6" style={{ fontFamily: '"Playfair Display", serif' }}>
+            <h1 className="text-2xl font-bold text-gray-900 mb-6" style={{ fontFamily: '"Playfair Display", serif' }}>
                 Checkout
             </h1>
 
