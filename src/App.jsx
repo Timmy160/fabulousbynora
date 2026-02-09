@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./Pages/Index";
 import AboutUs from "./Pages/Aboutus";
@@ -11,10 +11,12 @@ import ShopChildren from "./Pages/ShopForChildren";
 import ShopAccessories from "./Pages/ShopForAccessories";
 import ProductPage from "./Pages/ProductPage";
 import CheckoutPage from "./Pages/CheckoutPage";
-import CustomOrder from './Pages/CustomOrder';
-import RefundPolicy from './Pages/RefundPolicy';
-import AdminDashboard from './Pages/AdminDashboard';
-
+import CustomOrder from "./Pages/CustomOrder";
+import RefundPolicy from "./Pages/RefundPolicy";
+import AdminDashboard from "./Pages/AdminDashboard";
+import Events from "./Pages/Events";
+import EventShowCase from "./components/EventShowCase";
+import EventItem from "./components/EventItemShowCase";
 
 function App() {
   return (
@@ -26,6 +28,10 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/custom" element={<CustomOrder />} />
         <Route path="/refund" element={<RefundPolicy />} />
+        <Route path="/events" element={<Events />}>
+          <Route path="" element={<EventShowCase />} />
+          <Route path="eventitem" element={<EventItem />} />
+        </Route>
 
         {/* Category / Shop pages */}
         <Route path="/category/men" element={<ShopMen />} />
@@ -40,7 +46,6 @@ function App() {
         <Route path="/checkout" element={<CheckoutPage />} />
 
         <Route path="/admin" element={<AdminDashboard />} />
-        
       </Routes>
       <Footer />
     </BrowserRouter>
