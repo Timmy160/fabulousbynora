@@ -43,7 +43,7 @@ const EventItemShowCase = () => {
           {eventProductsClothes
             .filter((product, index) => product.name === eventProductsClothes[selectedCothes].name)
             .map((product, index) => (
-              <div onClick={() => handleViewImage(product.image)} key={index} className="eventProductCard shadow-lg rounded-lg w-[45vw] md:w-[21vw] px-3 mb-6">
+              <div onClick={() => handleViewImage(product.image)} key={index} className="eventProductCard shadow-lg rounded-lg w-[45vw] md:w-[21vw] px-3 mb-6 hover:scale-105 transition-transform cursor-pointer duration-400">
                 <img src={product.image} alt={product.name} className="eventProductImage w-full h-[30vh] md:h-[40vh]" />
                 <div className="flex justify-between p-2 md:p-5">
                   <div className="text-[2.5vw] md:text-[1.2vw]" style={{ fontFamily: "Playfair Display" }}>

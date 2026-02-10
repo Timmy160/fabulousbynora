@@ -43,7 +43,7 @@ const EventShowCase = () => {
                 navigateToEventItem();
               }}
               key={index}
-              className="eventProductCard shadow-lg rounded-lg w-[45vw] lg:w-[21vw]  px-3 mb-6">
+              className="eventProductCard shadow-lg rounded-lg w-[45vw] lg:w-[21vw]  px-3 mb-6 hover:scale-105 transition-transform cursor-pointer duration-400">
               <img src={product.image} alt={product.name} className="eventProductImage w-full h-[30vh] md:h-[40vh]" />
               <div className="flex justify-between p-2 md:p-5">
                 <div className="text-[2.5vw] md:text-[1.2vw]" style={{ fontFamily: "Playfair Display" }}>
